@@ -3,9 +3,10 @@
   "outputDirectory": "frontend/dist",
   "installCommand": "cd frontend && npm install",
   "framework": null,
-  "functions": {
-    "backend/api/index.py": {
-      "runtime": "@vercel/python@3.0.7"
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/backend/api/index.py"
     }
-  }
+  ]
 }
