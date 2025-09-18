@@ -63,6 +63,30 @@ class SecureDataLoader:
         notes = {}
         data_dir = Path(__file__).parent.parent / "data"
 
+        # 먼저 암호화된 파일 시도
+        encrypted_dir = data_dir / "encrypted"
+        if encrypted_dir.exists():
+            from ..utils.encryption_utils import encryption_manager
+
+            note_files = {
+                "note1": "note1_basic.md.enc",
+                "note2": "note2_heavy_metals.md.enc",
+                "note3": "note3_minerals.md.enc",
+                "note4": "note4_health_indicators.md.enc",
+                "note5": "note5_summary.md.enc"
+            }
+
+            for key, filename in note_files.items():
+                file_path = encrypted_dir / filename
+                if file_path.exists():
+                    decrypted_content = encryption_manager.decrypt_file(str(file_path))
+                    if decrypted_content:
+                        notes[key] = decrypted_content
+
+            if notes:
+                return notes
+
+        # 암호화된 파일이 없으면 원본 파일 사용 (개발 환경)
         note_files = {
             "note1": "note1_basic.md",
             "note2": "note2_heavy_metals.md",
