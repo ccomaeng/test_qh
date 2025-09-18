@@ -71,3 +71,4 @@ tmp/
 backend/app/data/*.md
 !backend/app/data/.gitkeep
 !backend/app/data/README.md
+.vercel

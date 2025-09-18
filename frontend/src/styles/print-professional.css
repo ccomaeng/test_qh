@@ -1,0 +1,356 @@
+/*
+ * Professional Print Styles for Korean Hair Analysis Report
+ * InDesign-inspired layout optimization for A4 print
+ * Author: InDesign Professional Standards
+ */
+
+/* =================================================================
+   1. 페이지 설정 - A4 최적화
+   ================================================================= */
+@page {
+  size: A4 portrait;
+  /* 전문적인 마진 설정: 상단 최소화, 균형잡힌 여백 */
+  margin: 5mm 12mm 15mm 12mm; /* 상단/좌우/하단 */
+
+  /* 페이지 네임 및 출혈 영역 */
+  bleed: 0mm;
+  marks: none;
+
+  /* 헤더/푸터 영역 예약 */
+  @top-center {
+    content: "";
+    margin: 0;
+  }
+
+  @bottom-center {
+    content: "";
+    margin: 0;
+  }
+}
+
+/* 첫 페이지 특별 설정 */
+@page :first {
+  margin-top: 3mm; /* 첫 페이지는 최소 상단 여백 */
+}
+
+/* =================================================================
+   2. 기본 타이포그래피 - 한글 최적화
+   ================================================================= */
+@media print {
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: white !important;
+    color: #000 !important;
+
+    /* 한글 최적화 폰트 스택 */
+    font-family: 'Malgun Gothic', '맑은 고딕', 'Noto Sans KR',
+                 -apple-system, BlinkMacSystemFont,
+                 'Apple SD Gothic Neo', Arial, sans-serif !important;
+
+    /* 타이포그래피 설정 */
+    font-size: 10.5pt !important;
+    line-height: 1.55 !important; /* 한글 가독성 최적화 */
+    letter-spacing: -0.02em !important; /* 글자간 조정 */
+    word-spacing: 0.05em !important;
+    text-rendering: optimizeLegibility !important;
+
+    /* 한글 텍스트 렌더링 */
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    font-feature-settings: "kern" 1, "liga" 1 !important;
+  }
+
+  /* =================================================================
+     3. 제목 계층 구조 - InDesign 스타일
+     ================================================================= */
+
+  /* 메인 타이틀 (H1) */
+  h1, .main-title {
+    font-size: 16pt !important;
+    font-weight: 700 !important;
+    color: #1a365d !important;
+    text-align: center !important;
+    margin: 0 0 12pt 0 !important;
+    padding: 0 !important;
+    letter-spacing: 0.02em !important;
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+  }
+
+  /* 섹션 타이틀 (H2) */
+  h2, .section-title {
+    font-size: 13pt !important;
+    font-weight: 600 !important;
+    color: #2d3748 !important;
+    margin: 8pt 0 6pt 0 !important;
+    padding: 0 !important;
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+    orphans: 3 !important;
+  }
+
+  /* 서브 타이틀 (H3) */
+  h3, .sub-title {
+    font-size: 11pt !important;
+    font-weight: 600 !important;
+    color: #4a5568 !important;
+    margin: 6pt 0 4pt 0 !important;
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+  }
+
+  /* =================================================================
+     4. 본문 텍스트 최적화
+     ================================================================= */
+
+  p, .content-text {
+    font-size: 10pt !important;
+    line-height: 1.5 !important;
+    color: #2d3748 !important;
+    margin: 0 0 6pt 0 !important;
+    padding: 0 !important;
+    text-align: justify !important;
+    text-justify: inter-word !important;
+
+    /* 한글 줄바꿈 최적화 */
+    word-break: keep-all !important;
+    line-break: strict !important;
+    overflow-wrap: break-word !important;
+    hyphens: none !important;
+
+    /* 페이지 분할 제어 */
+    orphans: 2 !important;
+    widows: 2 !important;
+  }
+
+  /* 강조 텍스트 */
+  strong, b, .emphasis {
+    font-weight: 600 !important;
+    color: #1a365d !important;
+  }
+
+  /* =================================================================
+     5. 레이아웃 컨테이너
+     ================================================================= */
+
+  /* 메인 컨테이너 */
+  .print-container {
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: white !important;
+  }
+
+  /* 섹션 컨테이너 */
+  .section-container {
+    margin-bottom: 10pt !important;
+    page-break-inside: auto !important;
+    break-inside: auto !important;
+  }
+
+  /* 정보 박스 스타일 */
+  .info-box {
+    background: #f8f9fa !important;
+    border: 0.5pt solid #e2e8f0 !important;
+    border-radius: 0 !important;
+    padding: 8pt !important;
+    margin: 6pt 0 !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* 요약 박스 */
+  .summary-box {
+    background: #edf2f7 !important;
+    border-left: 3pt solid #4299e1 !important;
+    padding: 8pt 10pt !important;
+    margin: 8pt 0 !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* =================================================================
+     6. 페이지 분할 최적화 - InDesign 방식
+     ================================================================= */
+
+  /* 제목과 내용 분리 방지 */
+  .keep-with-next {
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+  }
+
+  /* 섹션 전체 분리 방지 (짧은 섹션용) */
+  .keep-together {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* 긴 컨텐츠 허용 분할 */
+  .allow-break {
+    page-break-inside: auto !important;
+    break-inside: auto !important;
+    orphans: 3 !important;
+    widows: 3 !important;
+  }
+
+  /* 페이지 시작 강제 */
+  .page-break-before {
+    page-break-before: always !important;
+    break-before: page !important;
+  }
+
+  /* =================================================================
+     7. 리스트 스타일링
+     ================================================================= */
+
+  ul, ol {
+    margin: 6pt 0 6pt 15pt !important;
+    padding: 0 !important;
+    page-break-inside: auto !important;
+  }
+
+  li {
+    margin: 2pt 0 !important;
+    padding: 0 !important;
+    line-height: 1.4 !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* 번호 없는 리스트 마커 */
+  ul li {
+    list-style-type: disc !important;
+    list-style-position: outside !important;
+  }
+
+  /* =================================================================
+     8. 테이블 스타일링 (필요시)
+     ================================================================= */
+
+  table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin: 8pt 0 !important;
+    page-break-inside: auto !important;
+  }
+
+  th, td {
+    border: 0.5pt solid #cbd5e0 !important;
+    padding: 4pt 6pt !important;
+    text-align: left !important;
+    vertical-align: top !important;
+  }
+
+  th {
+    background: #f7fafc !important;
+    font-weight: 600 !important;
+    page-break-after: avoid !important;
+  }
+
+  /* =================================================================
+     9. 인쇄 숨김 요소
+     ================================================================= */
+
+  .no-print,
+  .screen-only,
+  button,
+  .btn,
+  nav,
+  .navigation {
+    display: none !important;
+  }
+
+  /* =================================================================
+     10. 푸터 및 이미지
+     ================================================================= */
+
+  .footer-section {
+    margin-top: 15pt !important;
+    padding-top: 8pt !important;
+    border-top: 0.5pt solid #e2e8f0 !important;
+    text-align: center !important;
+    page-break-inside: avoid !important;
+  }
+
+  .footer-image {
+    max-width: 200pt !important;
+    max-height: 40pt !important;
+    height: auto !important;
+    width: auto !important;
+  }
+
+  /* =================================================================
+     10.5. 화면 숨김/인쇄 표시 전환
+     ================================================================= */
+
+  /* 인쇄시에만 표시되는 요소들 */
+  .main-title,
+  .section-title {
+    display: block !important;
+    visibility: visible !important;
+  }
+
+  /* 컨테이너 상단 여백 최소화 */
+  .print-container {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+  }
+
+  /* =================================================================
+     11. 성능 최적화
+     ================================================================= */
+
+  /* 그림자 및 효과 제거 */
+  .shadow-sm, .shadow, .shadow-md, .shadow-lg, .shadow-xl {
+    box-shadow: none !important;
+  }
+
+  /* 둥근 모서리 제거 */
+  .rounded, .rounded-sm, .rounded-md, .rounded-lg {
+    border-radius: 0 !important;
+  }
+
+  /* 애니메이션 비활성화 */
+  *, *::before, *::after {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
+  }
+}
+
+/* =================================================================
+   12. 브라우저별 호환성
+   ================================================================= */
+
+/* Chrome/Safari */
+@media print and (-webkit-min-device-pixel-ratio: 0) {
+  html, body {
+    -webkit-print-color-adjust: exact !important;
+  }
+}
+
+/* Firefox */
+@-moz-document url-prefix() {
+  @media print {
+    html, body {
+      color-adjust: exact !important;
+    }
+  }
+}
+
+/* Edge */
+@supports (-ms-ime-align: auto) {
+  @media print {
+    html, body {
+      color-adjust: exact !important;
+    }
+  }
+}
