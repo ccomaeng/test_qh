@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { HairAnalysisInput, APIResponse, FullAnalysisResponse } from '../types';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || (import.meta.env.PROD ? 'https://backend-7lac8qjfv-ccomaengs-projects.vercel.app' : 'http://localhost:8000');
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 
 const api = axios.create({
   baseURL: API_BASE_URL,
