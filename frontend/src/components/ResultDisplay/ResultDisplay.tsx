@@ -190,7 +190,7 @@ export const ResultDisplay: React.FC<ResultDisplayProps> = ({ result, onReset })
       </div>
 
 
-      <style jsx>{`
+      <style>{`
         .personal-info-section {
           padding: 8px 10px 0px 10px;
           border-radius: 8px;

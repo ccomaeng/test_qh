@@ -34,7 +34,6 @@ export const generatePDF = async (elementId: string, fileName: string = '큐모�
       backgroundColor: '#ffffff',
       windowWidth: element.scrollWidth,
       windowHeight: element.scrollHeight,
-      letterRendering: true,
       allowTaint: true,
       onclone: (clonedDoc) => {
         // 클론된 문서에서 불필요한 요소 제거

@@ -191,7 +191,7 @@ export const StandardResultDisplay: React.FC<StandardResultDisplayProps> = ({ re
       </div>
 
       {/* 인쇄 스타일 */}
-      <style jsx>{`
+      <style>{`
         @media print {
           .no-print {
             display: none !important;
